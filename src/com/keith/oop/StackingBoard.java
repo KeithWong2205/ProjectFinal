@@ -143,6 +143,16 @@ public class StackingBoard extends JPanel
 		}
 	}
 	
+	private void MoveLeft()								//Move the Brick to the Left
+	{
+		tryMovable(CurrentBrick, BrickCurrentX - 1, BrickCurrentY);
+	}
+	
+	private void MoveRight()							//Move the Brick to the Right
+	{
+		tryMovable(CurrentBrick, BrickCurrentX + 1, BrickCurrentY);
+	}
+	
 	private void CleanSlate()							//Clean the board
 	{
 		for (int i = 0; i < Height * Width; i++)
@@ -325,8 +335,8 @@ public class StackingBoard extends JPanel
 			switch (keycode)
 			{
 				case KeyEvent.VK_DOWN -> MoveDown();
-				case KeyEvent.VK_LEFT -> tryMovable(CurrentBrick, BrickCurrentX - 1, BrickCurrentY);
-				case KeyEvent.VK_RIGHT -> tryMovable(CurrentBrick, BrickCurrentX + 1, BrickCurrentY);
+				case KeyEvent.VK_LEFT -> MoveLeft();
+				case KeyEvent.VK_RIGHT -> MoveRight();
 				case KeyEvent.VK_UP -> GamePaused();
 				case KeyEvent.VK_SPACE -> FullDropDown();
 				case KeyEvent.VK_PERIOD -> tryMovable(CurrentBrick.RotateRight(), BrickCurrentX, BrickCurrentY);
